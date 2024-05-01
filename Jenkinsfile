@@ -50,7 +50,7 @@ pipeline{
             }
         }
 
-       
+    }   
     post { 
         always { 
             echo 'I will always exicute run !'
@@ -64,4 +64,4 @@ pipeline{
     }
 }
 
-}
+
