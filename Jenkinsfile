@@ -50,7 +50,7 @@ pipeline{
             steps {
                 sh """
                     ls -la
-                    zip -r catalogue.zip ./* -x ".git"^Cx "*.zip"
+                    zip -q -r catalogue.zip ./* -x ".git"^Cx "*.zip"
                     ls -ltr
                 
                 """
