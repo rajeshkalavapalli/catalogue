@@ -50,6 +50,8 @@ pipeline{
             steps {
                 sh """
                     ls -la
+                    zip -r catalogue.zip ./* -x ".git"^Cx "*.zip"
+                    ls -ltr
                 
                 """
             }
@@ -58,6 +60,7 @@ pipeline{
     post { 
         always { 
             echo 'I will always exicute run !'
+            deleteDir()
         }
         failure { 
             echo 'I will always run when failure !'
