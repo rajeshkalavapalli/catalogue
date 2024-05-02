@@ -36,16 +36,11 @@ pipeline{
                 }
             }
         }
-        stage ('build') {
-            steps {
-                echo 'build.......'
-            }
-        }
-        stage ('deploye') {
+        
+        stage ('install dependencies') {
             steps {
                 sh """
-                    echo 'iam learning jenkins.......'
-                    #sleep 10
+                    npm install 
                 
                 """
             }
