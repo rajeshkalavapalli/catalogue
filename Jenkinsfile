@@ -6,7 +6,7 @@ pipeline{
         }
 }
     environment { 
-        PackageVersion = ''
+        packageVersion = ''
     }
 
     options {
@@ -27,17 +27,15 @@ pipeline{
 
     stages {
        
-        stage('get the version') {
+        stage ('get version ') {
             steps {
-                script {
+                script{
                     def packageJson = readJSON file: 'package.json'
                     packageVersion = packageJson.version
-                    echo "application version: $packageVersion"
+                    echo "applictaion version: $packageVersion"
                 }
             }
         }
-
-      
         stage ('build') {
             steps {
                 echo 'build.......'
@@ -47,12 +45,13 @@ pipeline{
             steps {
                 sh """
                     echo 'iam learning jenkins.......'
-                    echo '$GREETING'
+                    #sleep 10
+                
                 """
             }
         }
-
-    }   
+        
+    }
     post { 
         always { 
             echo 'I will always exicute run !'
@@ -65,5 +64,4 @@ pipeline{
         }
     }
 }
-
 
