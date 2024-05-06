@@ -48,7 +48,7 @@
             steps {
                 sh """
                     ls -la
-                    zip -r catalogue.zip ./* -x ".git" -x "*.zip"
+                    zip -q -r catalogue.zip ./* -x ".git" -x "*.zip"
                     ls -ltr
 
                 """
