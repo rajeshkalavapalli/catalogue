@@ -46,7 +46,9 @@
 
         stage ('build') {
             steps {
-                echo 'build.......'
+                sh """
+                    ls -la
+                """
             }
         }
         stage ('deploye') {
