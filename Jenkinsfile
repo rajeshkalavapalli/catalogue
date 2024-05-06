@@ -47,22 +47,7 @@
             steps {
                 sh """
                     echo 'iam learning jenkins.......'
-                    echo '$GREETING'
-                
-                """
-            }
-        }
-
-        stage ('params') {
-            steps {
-                sh """
-                echo "Hello ${params.PERSON}"
-
-                echo "Choice: ${params.CHOICE}"
-
-                echo "Password: ${params.PASSWORD}"
-                
-                echo "Toggle": ${params.TOGGLE}
+                    
                 """
             }
         }
