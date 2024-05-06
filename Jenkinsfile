@@ -26,11 +26,8 @@
     // }
 
     stages {
-       
         stage ('get the version ') {
-            
             steps {
-                
                 script{
                     def packageJson = readJSON file: 'package.json'
                     packageVersion = packageJson.version
@@ -38,6 +35,15 @@
                 }
             }
         }
+
+         stage ('install dependencies') {
+            steps {
+                sh"""
+                    npm install 
+                """
+            }
+        }
+
         stage ('build') {
             steps {
                 echo 'build.......'
