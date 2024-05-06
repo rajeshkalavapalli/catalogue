@@ -1,4 +1,4 @@
-pipeline{
+ pipeline{
     agent {
         node {
             label 'AGENT'
@@ -6,8 +6,7 @@ pipeline{
         }
 }
     environment { 
-        packageVersion = ''
-        nexusUrl= '172.31.44.1:8081'
+        packageVersion = ""
     }
 
     options {
@@ -28,60 +27,50 @@ pipeline{
 
     stages {
        
-        stage ('get version ') {
+        stage ('get the version ') {
+            
             steps {
+                
                 script{
                     def packageJson = readJSON file: 'package.json'
                     packageVersion = packageJson.version
-                    echo "applictaion version: $packageVersion"
+                    echo "applictaion version : $packageVersion"
                 }
             }
         }
-        
-        stage ('install dependencies') {
-            steps {
-                sh """
-                    npm install 
-                
-                """
-            }
-        }
-        
         stage ('build') {
             steps {
+                echo 'build.......'
+            }
+        }
+        stage ('deploye') {
+            steps {
                 sh """
-                    ls -la
-                    zip -q -r catalogue.zip ./* -x ".git"^Cx "*.zip"
-                    ls -ltr
+                    echo 'iam learning jenkins.......'
+                    echo '$GREETING'
                 
                 """
             }
         }
 
-        stage ('public artifacts') {
+        stage ('params') {
             steps {
-                nexusArtifactUploader(
-                    nexusVersion: 'nexus3',
-                    protocol: 'http',
-                    nexusUrl: "${nexusUrl}",
-                    groupId: 'com.roboshop',
-                    version: "${packageVersion}",
-                    repository: 'catalogue',
-                    credentialsId: 'nexus',
-                    artifacts: [
-                        [artifactId: 'catalogue',
-                        classifier: '',
-                        file: 'catalogue.zip',
-                        type: 'zip']
-                    ]
-                )
+                sh """
+                echo "Hello ${params.PERSON}"
+
+                echo "Choice: ${params.CHOICE}"
+
+                echo "Password: ${params.PASSWORD}"
+                
+                echo "Toggle": ${params.TOGGLE}
+                """
             }
         }
+        
     }
     post { 
         always { 
             echo 'I will always exicute run !'
-            deleteDir()
         }
         failure { 
             echo 'I will always run when failure !'
@@ -91,4 +80,5 @@ pipeline{
         }
     }
 }
+
 
