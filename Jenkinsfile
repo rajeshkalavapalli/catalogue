@@ -62,6 +62,16 @@ pipeline {
                 )
             }
         }
+
+         stage ('Deploy') {
+            steps {
+                build job: "catalogue-deploye", wait: true, parameters:[
+                    string(name: 'version',value: "${packageVersion}")
+                    booleanParam(name: 'environment',value:'dev')
+            ]
+
+            }
+        }
     }
     
     post { 
