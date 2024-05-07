@@ -87,6 +87,7 @@
             echo 'I will always run when success !'
         }
     }
+ }
 }
 
 
