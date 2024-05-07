@@ -7,7 +7,7 @@
 }
     environment { 
         packageVersion = ""
-        nexusUrl = "172.31.34.109"
+        nexusUrl = "172.31.34.109:8081"
     }
 
     options {
@@ -67,7 +67,7 @@
                     repository: 'catalogue',
                     credentialsId: 'nexus-auth',
                     artifacts: [
-            [artifactId: catalogue,s
+            [artifactId: catalogue,
              classifier: '',
              file: 'catalogue.zip',
              type: 'zip']
