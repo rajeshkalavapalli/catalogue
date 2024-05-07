@@ -61,16 +61,16 @@
                 nexusArtifactUploader(
                     nexusVersion: 'nexus3',
                     protocol: 'http',
-                    nexusUrl: 'my.nexus.address',
-                    groupId: 'com.example',
-                    version: version,
-                    repository: 'RepositoryName',
-                    credentialsId: 'CredentialsId',
+                    nexusUrl: ${nexusUrl},
+                    groupId: 'com.roboshop',
+                    version: "${packageVersion}",
+                    repository: 'catalogue',
+                    credentialsId: 'nexus-auth',
                     artifacts: [
-            [artifactId: projectName,
+            [artifactId: catalogue,s
              classifier: '',
-             file: 'my-service-' + version + '.jar',
-             type: 'jar']
+             file: 'catalogue.zip',
+             type: 'zip']
                 ]
             )
             }
