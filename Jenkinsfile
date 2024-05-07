@@ -65,7 +65,7 @@ pipeline {
 
         stage ('Deploy') {
             steps {
-                def params [
+                def params = [
                     string(name: 'version', value: "${packageVersion}")
                     string(name: 'environment',value:'dev')
                 ]
