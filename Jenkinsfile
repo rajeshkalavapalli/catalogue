@@ -55,26 +55,29 @@
                 """
             }
         }
-
-         stage ('publish artifacts') {
+        
+        stage ('build') {
             steps {
                 nexusArtifactUploader(
-                    nexusVersion: 'nexus3',
-                    protocol: 'http',
-                    nexusUrl: ${nexusUrl},
-                    groupId: 'com.roboshop',
-                    version: "${packageVersion}",
-                    repository: 'catalogue',
-                    credentialsId: 'nexus-auth',
-                    artifacts: [
-            [artifactId: catalogue,
+        nexusVersion: 'nexus3',
+        protocol: 'http',
+        nexusUrl: '${nexusUrl}',
+        groupId: 'com.roboshop',
+        version: ${packageVersion},
+        repository: 'catalogue',
+        credentialsId: 'nexus-auth',
+        artifacts: [
+            [artifactId: 'catalogue',
              classifier: '',
              file: 'catalogue.zip',
              type: 'zip']
-                ]
-            )
+        ]
+     )
             }
         }
+
+         
+    }
         stage ('deploye') {
             steps {
                 sh """
