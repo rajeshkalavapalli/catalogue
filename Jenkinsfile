@@ -65,12 +65,14 @@ pipeline {
 
         stage ('Deploy') {
             steps {
-                def params = [
+               script{
+                 def params = [
                     string(name: 'version', value: "${packageVersion}")
                     
                 ]
                 build job: "catalogue-deploye", wait: true, parameters: params
 
+               }
             }
         }
     }
