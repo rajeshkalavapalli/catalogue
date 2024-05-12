@@ -9,9 +9,9 @@ def configMap = [
 
 ]
 
-if (! env.BRANCH_NAME.equalsIgnoreCase('main')) {
+if( ! env.BRANCH_NAME.equalsIgnoreCase('main')){
     pipelineDecission.decidePipeline(configMap)
 }
-else {
-    echo "this is production deal with cr process"
+else{
+    echo "this is production, deal with cr process"
 }
