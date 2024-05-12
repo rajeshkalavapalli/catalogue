@@ -91,9 +91,9 @@ pipeline {
         }
 
         stage ('Deploy') {
-            when {
+             when {
                 expression{
-                    params.Deploy = true
+                    params.Deploy == 'true'
                 }
             }
             steps {
